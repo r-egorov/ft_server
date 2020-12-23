@@ -1,4 +1,0 @@
-"CREATE DATABASE wordpress;"
-"GRANT ALL PRIVILIGES ON wordpress.* TO 'root'@'localhost' IDENTIFIED BY 'root';"
-"FLUSH PRIVILEGES;"
-"update mysql.user set plugin='' where user='root';"
