@@ -6,14 +6,14 @@
 #    By: cisis <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 15:35:29 by cisis             #+#    #+#              #
-#    Updated: 2020/12/25 14:48:18 by cisis            ###   ########.fr        #
+#    Updated: 2020/12/25 17:20:55 by cisis            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 
 # Download the required stuff
-RUN apt-get update && apt-get upgrade && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 		wget \
 		supervisor \
 		nginx \
@@ -37,6 +37,11 @@ COPY ./srcs/configs/nginx.conf /etc/nginx/sites-available/ft_server.conf
 COPY ./srcs/configs/supervisor.conf /etc/supervisor/conf.d/supervisord.conf
 COPY ./srcs/configs/php-myadmin.config.php /var/www/html/phpmyadmin/config.inc.php
 COPY ./srcs/configs/wp-config.php /var/www/html/wordpress/
+
+# Make a directory and copy sample ssl-cerificate and key in the dir
+COPY ./srcs/ssl/ssl_sample.crt /etc/ssl/
+COPY ./srcs/ssl/ssl_sample.key /etc/ssl/
+RUN chmod 400 /etc/ssl/ssl_sample.key
 
 # Make the directories for logs, scripts and SSH
 RUN mkdir /logs/
@@ -63,6 +68,6 @@ EXPOSE 443
 # RUN chown -R www-data:www-data *
 # RUN chmod -R 755 /var/www/*
 
-# RUNTIME (run in the daemon `-d` mode): Run the supervisor daemon
-# on the foreground
+# RUNTIME (run in the daemon `-d` mode)
+# Run the supervisor daemon on the foreground
 ENTRYPOINT ["/usr/bin/supervisord"]
