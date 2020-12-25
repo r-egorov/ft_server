@@ -6,7 +6,7 @@
 #    By: cisis <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 15:35:29 by cisis             #+#    #+#              #
-#    Updated: 2020/12/25 14:05:03 by cisis            ###   ########.fr        #
+#    Updated: 2020/12/25 14:48:18 by cisis            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ RUN mkdir /logs/
 RUN mkdir /opt/run/
 
 # Copy the scripts and give the necessary permissions
-COPY ./srcs/scripts/*.sh /opt/run/
+COPY ./srcs/scripts/sql.sh /opt/run/
+COPY ./srcs/scripts/toggle_autoindent.sh /opt/run/
+COPY ./srcs/scripts/sql_script.sql /opt/run
 RUN chmod 755 /opt/run/*.sh
 
 # Set up a password for the root user
@@ -58,8 +60,8 @@ RUN ln -s ../sites-available/ft_server.conf
 EXPOSE 80
 EXPOSE 443
 
-#RUN chown -R www-data:www-data *
-#RUN chmod -R 755 /var/www/*
+# RUN chown -R www-data:www-data *
+# RUN chmod -R 755 /var/www/*
 
 # RUNTIME (run in the daemon `-d` mode): Run the supervisor daemon
 # on the foreground
