@@ -6,7 +6,7 @@
 #    By: cisis <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 15:35:29 by cisis             #+#    #+#              #
-#    Updated: 2020/12/25 17:20:55 by cisis            ###   ########.fr        #
+#    Updated: 2020/12/28 14:13:53 by cisis            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ RUN mkdir /opt/run/
 
 # Copy the scripts and give the necessary permissions
 COPY ./srcs/scripts/sql.sh /opt/run/
-COPY ./srcs/scripts/toggle_autoindent.sh /opt/run/
+COPY ./srcs/scripts/toggle_autoindex.sh /opt/run/
 COPY ./srcs/scripts/sql_script.sql /opt/run
 RUN chmod 755 /opt/run/*.sh
 
