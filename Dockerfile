@@ -6,7 +6,7 @@
 #    By: cisis <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 15:35:29 by cisis             #+#    #+#              #
-#    Updated: 2020/12/28 14:13:53 by cisis            ###   ########.fr        #
+#    Updated: 2021/01/19 17:23:59 by cisis            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,13 +61,18 @@ WORKDIR /etc/nginx/sites-enabled
 RUN rm default
 RUN ln -s ../sites-available/ft_server.conf
 
+# Copy the Index web-page
+COPY ./srcs/pages/* /var/www/html/
+
+# Necessary permissions
+RUN chown -R www-data:www-data *
+RUN chmod -R 755 /var/www/*
+
 # The necessary ports
 EXPOSE 80
 EXPOSE 443
 
-# RUN chown -R www-data:www-data *
-# RUN chmod -R 755 /var/www/*
-
 # RUNTIME (run in the daemon `-d` mode)
 # Run the supervisor daemon on the foreground
+WORKDIR /opt/run
 ENTRYPOINT ["/usr/bin/supervisord"]

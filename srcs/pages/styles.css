@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@100;700&display=swap');
+
+html {
+	height: 100%;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background: rgb(247,152,241);
+	background: linear-gradient(45deg, rgba(247,152,241,1) 0%,
+		rgba(255,255,255,1) 50%, rgba(0,212,255,1) 100%);
+}
+
+div {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, p {
+	font-family: 'Roboto', sans-serif;
+}
+
+p {
+	font-size: 25px;
+}
+
+.main-container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.greeting {
+	display: grid;
+	text-align: center;
+	align-content: center;
+	min-height: 10em;
+	font-family: 'Roboto', sans-serif;
+	font-size: 40px;
+}
+
+.main-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'left-column right-column'
+		'signature signature'
+	;
+	overflow: auto;
+}
+
+.left-column {
+	grid-area: left-column;
+	padding: 30px;
+	padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.right-column {
+	grid-area: right-column;
+	padding-top: 50px;
+    padding-bottom: 50px;
+	display: grid;
+	align-content: center;
+    text-align: center;
+}
+
+.links-wrapper {
+	display: flex;
+	grid-template-columns: repeat(auto-fit, 320px);
+	gap: 20px;
+	justify-content: center;
+	padding-bottom: 50px;
+}
+
+.img-link {
+    display: block;
+    width: auto;
+    height: 150px;
+    object-fit: cover;
+}
+
+.signature {
+	grid-area: signature;
+	text-align: right;
+}
+
+#signature {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 40px;
+}
