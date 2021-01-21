@@ -6,7 +6,7 @@
 #    By: cisis <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 15:35:29 by cisis             #+#    #+#              #
-#    Updated: 2021/01/19 17:23:59 by cisis            ###   ########.fr        #
+#    Updated: 2021/01/21 11:05:07 by cisis            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ WORKDIR /etc/nginx/sites-enabled
 RUN rm default
 RUN ln -s ../sites-available/ft_server.conf
 
-# Copy the Index web-page
+# Copy the Welcome web-page
 COPY ./srcs/pages/* /var/www/html/
 
 # Necessary permissions
